@@ -4,20 +4,28 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Input N");
-        int N = in.nextInt();
-        double[] numList = new double[N];
-        for(int i = 0; i < N; i++){
-            numList[i] = in.nextInt();
-        }
 
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j < N; j++){
-                System.out.print(numList[(j + i) % (N)]);
-                System.out.print(" ");
+
+        var array = new int[] {3,1,7,12,2,5,6};
+        array = ShellSort(array);
+        for (int i = 0; i < array.length; i++)
+        System.out.println(array[i]);
+    }
+
+    public static int[] ShellSort(int[] array){
+    var flag = true;
+        while (flag) {
+            flag = false;
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1]) {
+                    flag = true;
+                    var temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    i = i > 0 ? --i : 0;
+                }
             }
-            System.out.println();
         }
+        return array;
     }
 }
